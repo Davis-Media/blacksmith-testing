@@ -11,6 +11,9 @@ jobs:
     runs-on: blacksmith-4vcpu-ubuntu-2204
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Install PNPM
         uses: pnpm/action-setup@v2
         with:
@@ -21,6 +24,7 @@ jobs:
         uses: useblacksmith/setup-node@v5
         with:
           node-version: 20
+          cache: "pnpm"
 
       - name: Get pnpm store directory
         shell: bash
