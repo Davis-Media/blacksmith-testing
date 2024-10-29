@@ -11,18 +11,17 @@ jobs:
     runs-on: blacksmith-4vcpu-ubuntu-2204
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
+      - name: Setup Node
+        uses: useblacksmith/setup-node@v5
         with:
-          bun-version: latest
+          node-version: 20
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: bun install
+        run: pnpm install
 
       - name: Run linting
-        run: bun run lint
+        run: pnpm run lint
 
       - name: Build Next.js app
-        run: bun run build
+        run: pnpm run build
